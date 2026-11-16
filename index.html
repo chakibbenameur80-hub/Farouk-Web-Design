@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farouk Web Design | High-Converting E-Commerce & Web Applications</title>
+  <meta name="description" content="Farouk Web Design crafts high-converting, world-class e-commerce ecosystems and custom web applications for global brands across the US and Europe." />
+  <meta name="theme-color" content="#07070b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            obsidian: '#07070b',
+            panel: '#0f1117',
+            cyanx: '#22d3ee',
+            violetx: '#8b5cf6',
+            goldx: '#f5c542'
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(255,255,255,0.06), 0 20px 60px rgba(0,0,0,0.45)',
+            neon: '0 0 30px rgba(34,211,238,0.18)'
+          },
+          backgroundImage: {
+            grid: 'linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    body { background: #07070b; }
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .text-gradient {
+      background: linear-gradient(90deg, #22d3ee, #8b5cf6 55%, #f5c542);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-mesh::before,
+    .hero-mesh::after {
+      content: "";
+      position: absolute;
+      inset: auto;
+      width: 34rem;
+      height: 34rem;
+      border-radius: 9999px;
+      filter: blur(90px);
+      opacity: .22;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-mesh::before { top: -8rem; left: -8rem; background: #22d3ee; }
+    .hero-mesh::after { right: -10rem; top: 4rem; background: #8b5cf6; }
+    .grid-bg {
+      background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+      -webkit-mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+    }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .field:focus { outline: none; box-shadow: 0 0 0 2px rgba(34,211,238,.35); border-color: rgba(34,211,238,.5); }
+    .btn-primary {
+      background: linear-gradient(135deg, #22d3ee, #8b5cf6);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 10px 30px rgba(139,92,246,.25); }
+    .card-hover { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .card-hover:hover { transform: translateY(-4px); border-color: rgba(34,211,238,.35); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .card-hover, .btn-primary { transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-200 antialiased selection:bg-cyan-400/30 selection:text-white">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-obsidian/70 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <a href="#top" class="flex items-center gap-3">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-violet-500 text-sm font-extrabold text-black shadow-neon">FW</span>
+        <div>
+          <p class="text-sm font-semibold tracking-wide text-white">Farouk Web Design</p>
+          <p class="text-xs text-slate-400">Global Digital Agency</p>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-8 text-sm text-slate-300 md:flex">
+        <a href="#portfolio" class="hover:text-white transition">Portfolio</a>
+        <a href="#services" class="hover:text-white transition">Services</a>
+        <a href="#testimonials" class="hover:text-white transition">Testimonials</a>
+        <a href="#contact" class="hover:text-white transition">Contact</a>
+      </nav>
+      <div class="hidden md:block">
+        <a href="#contact" class="btn-primary inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold text-slate-950">Book a Discovery Call</a>
+      </div>
+      <button id="menuBtn" aria-label="Open menu" class="inline-flex items-center justify-center rounded-lg border border-white/10 p-2 text-slate-200 md:hidden">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden border-t border-white/10 bg-obsidian/95 md:hidden">
+      <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4 text-sm text-slate-300">
+        <a href="#portfolio" class="hover:text-white">Portfolio</a>
+        <a href="#services" class="hover:text-white">Services</a>
+        <a href="#testimonials" class="hover:text-white">Testimonials</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+        <a href="#contact" class="btn-primary mt-2 inline-flex justify-center rounded-full px-5 py-2.5 font-semibold text-slate-950">Book a Discovery Call</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero-mesh relative overflow-hidden">
+      <div class="grid-bg absolute inset-0 opacity-40"></div>
+      <div class="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-28">
+        <div class="reveal visible">
+          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-200">
+            <span class="h-2 w-2 rounded-full bg-cyan-300"></span> Trusted by ambitious brands in the US & Europe
+          </div>
+          <h1 class="max-w-2xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Crafting High-Converting, <span class="text-gradient">World-Class E-Commerce Ecosystems</span> & Custom Web Applications
+          </h1>
+          <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+            Farouk Web Design partners with e-commerce brands, startup founders, and entrepreneurs to build lightning-fast digital experiences engineered for trust, performance, and measurable revenue growth.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#contact" class="btn-primary inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold text-slate-950">Book a Discovery Call</a>
+            <a href="#portfolio" class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition">View Portfolio</a>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="glass rounded-full px-4 py-2 text-xs font-medium text-slate-200">⚡ Lightning-Fast Next.js Apps</span>
+            <span class="glass rounded-full px-4 py-2 text-xs font-medium text-slate-200">🏆 99.9% Performance Score</span>
+            <span class="glass rounded-full px-4 py-2 text-xs font-medium text-slate-200">🔒 Enterprise-Grade Security</span>
+            <span class="glass rounded-full px-4 py-2 text-xs font-medium text-slate-200">🌍 US & Europe Delivery</span>
+          </div>
+        </div>
+        <div class="reveal visible lg:justify-self-end">
+          <div class="glass relative w-full max-w-xl rounded-3xl p-5 shadow-glow">
+            <div class="absolute -right-4 -top-4 rounded-2xl border border-amber-300/30 bg-amber-300/10 px-4 py-2 text-xs font-semibold text-amber-200 backdrop-blur">Executive-grade execution</div>
+            <div class="rounded-2xl border border-white/10 bg-gradient-to-b from-slate-900 to-black p-5">
+              <div class="mb-4 flex items-center justify-between">
+                <div class="flex gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-rose-400"></span><span class="h-2.5 w-2.5 rounded-full bg-amber-300"></span><span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span></div>
+                <span class="text-xs text-slate-400">Performance Dashboard</span>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs text-slate-400">Conversion Lift</p>
+                  <p class="mt-2 text-2xl font-bold text-white">+180%</p>
+                  <div class="mt-3 h-2 rounded-full bg-white/10"><div class="h-2 w-[86%] rounded-full bg-gradient-to-r from-cyan-400 to-violet-500"></div></div>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs text-slate-400">Core Web Vitals</p>
+                  <p class="mt-2 text-2xl font-bold text-white">99/100</p>
+                  <div class="mt-3 h-2 rounded-full bg-white/10"><div class="h-2 w-[99%] rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400"></div></div>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4 sm:col-span-2">
+                  <p class="text-xs text-slate-400">Revenue-focused architecture</p>
+                  <div class="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
+                    <div class="rounded-lg bg-black/40 p-3"><p class="text-slate-400">Speed</p><p class="mt-1 font-semibold text-white">0.8s LCP</p></div>
+                    <div class="rounded-lg bg-black/40 p-3"><p class="text-slate-400">SEO</p><p class="mt-1 font-semibold text-white">Technical+</p></div>
+                    <div class="rounded-lg bg-black/40 p-3"><p class="text-slate-400">UX</p><p class="mt-1 font-semibold text-white">Conversion-led</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="mt-4 text-sm text-slate-300">Premium design systems, conversion strategy, and robust engineering—delivered as one seamless growth engine.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="relative py-20 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Portfolio & Case Studies</p>
+            <h2 class="mt-2 text-3xl font-bold text-white sm:text-4xl">Concept work engineered for premium brands</h2>
+            <p class="mt-3 max-w-2xl text-slate-300">Interactive showcases combining luxury aesthetics, performance engineering, and conversion strategy for global markets.</p>
+          </div>
+          <a href="#contact" class="text-sm font-semibold text-cyan-300 hover:text-cyan-200">Start a similar project →</a>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-3">
+          <!-- Maison Luxe -->
+          <article class="reveal glass card-hover group rounded-3xl p-5" data-case="maison">
+            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#1a1410] via-[#151821] to-[#0b1220] p-4">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,197,66,.25),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(139,92,246,.18),transparent_40%)]"></div>
+              <div class="relative">
+                <div class="flex items-center justify-between text-xs text-slate-300"><span>Maison Luxe</span><span>Paris, FR</span></div>
+                <div class="mt-4 rounded-xl border border-white/10 bg-black/30 p-4">
+                  <p class="text-xs uppercase tracking-widest text-amber-200">Luxury E-commerce</p>
+                  <p class="mt-2 text-lg font-semibold text-white">Editorial storefront for premium fashion</p>
+                  <div class="mt-4 grid grid-cols-3 gap-2">
+                    <div class="h-16 rounded-lg bg-white/10"></div>
+                    <div class="h-16 rounded-lg bg-white/10"></div>
+                    <div class="h-16 rounded-lg bg-white/10"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3 class="text-xl font-semibold text-white">Maison Luxe — Paris E-commerce</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-300">A refined commerce experience for a European luxury label, blending immersive storytelling with frictionless checkout.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">React</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">Tailwind</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">TypeScript</span>
+                <span class="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-cyan-200">Headless Commerce</span>
+              </div>
+              <div class="mt-4 grid grid-cols-2 gap-3">
+                <div class="rounded-xl border border-white/10 bg-white/5 p-3"><p class="text-xs text-slate-400">Metric</p><p class="mt-1 font-semibold text-emerald-300">+180% Conversion Rate</p></div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-3"><p class="text-xs text-slate-400">Outcome</p><p class="mt-1 font-semibold text-white">+42% AOV</p></div>
+              </div>
+              <button class="preview-btn mt-4 text-sm font-semibold text-cyan-300 hover:text-cyan-200" data-target="maison">View interactive preview →</button>
+              <div class="preview-panel mt-4 hidden rounded-xl border border-cyan-400/20 bg-cyan-400/5 p-4 text-sm text-slate-200" id="preview-maison">
+                <p class="font-medium text-white">Interactive preview highlights</p>
+                <ul class="mt-2 space-y-1 text-slate-300">
+                  <li>• Dynamic product storytelling with curated lookbooks</li>
+                  <li>• Streamlined 2-step checkout flow for EU/US shoppers</li>
+                  <li>• Localized content blocks and high-trust payment cues</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Apex Gear -->
+          <article class="reveal glass card-hover group rounded-3xl p-5" data-case="apex">
+            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#08131a] via-[#0e1320] to-[#120d1f] p-4">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,.22),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(139,92,246,.22),transparent_40%)]"></div>
+              <div class="relative">
+                <div class="flex items-center justify-between text-xs text-slate-300"><span>Apex Gear</span><span>New York, US</span></div>
+                <div class="mt-4 rounded-xl border border-white/10 bg-black/30 p-4">
+                  <p class="text-xs uppercase tracking-widest text-cyan-200">Performance Storefront</p>
+                  <p class="mt-2 text-lg font-semibold text-white">High-velocity DTC sports commerce</p>
+                  <div class="mt-4 flex items-end gap-2">
+                    <div class="h-10 w-full rounded bg-cyan-400/30"></div>
+                    <div class="h-16 w-full rounded bg-violet-400/30"></div>
+                    <div class="h-12 w-full rounded bg-cyan-400/20"></div>
+                    <div class="h-20 w-full rounded bg-violet-400/40"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3 class="text-xl font-semibold text-white">Apex Gear — NY Storefront</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-300">A conversion-optimized storefront for a New York performance brand, built for speed, scale, and campaign agility.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">React</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">Tailwind</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">TypeScript</span>
+                <span class="rounded-full border border-violet-400/20 bg-violet-400/10 px-3 py-1 text-violet-200">CRO Systems</span>
+              </div>
+              <div class="mt-4 grid grid-cols-2 gap-3">
+                <div class="rounded-xl border border-white/10 bg-white/5 p-3"><p class="text-xs text-slate-400">Metric</p><p class="mt-1 font-semibold text-emerald-300">+132% Conversion Rate</p></div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-3"><p class="text-xs text-slate-400">Outcome</p><p class="mt-1 font-semibold text-white">-38% Bounce Rate</p></div>
+              </div>
+              <button class="preview-btn mt-4 text-sm font-semibold text-cyan-300 hover:text-cyan-200" data-target="apex">View interactive preview →</button>
+              <div class="preview-panel mt-4 hidden rounded-xl border border-cyan-400/20 bg-cyan-400/5 p-4 text-sm text-slate-200" id="preview-apex">
+                <p class="font-medium text-white">Interactive preview highlights</p>
+                <ul class="mt-2 space-y-1 text-slate-300">
+                  <li>• Modular landing sections for rapid campaign launches</li>
+                  <li>• Performance-first media handling and lazy hydration</li>
+                  <li>• Persistent cart UX and urgency-driven merchandising</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- BioSkin -->
+          <article class="reveal glass card-hover group rounded-3xl p-5" data-case="bioskin">
+            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#071712] via-[#0d1418] to-[#171225] p-4">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,.2),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(245,197,66,.15),transparent_40%)]"></div>
+              <div class="relative">
+                <div class="flex items-center justify-between text-xs text-slate-300"><span>BioSkin</span><span>Berlin, DE</span></div>
+                <div class="mt-4 rounded-xl border border-white/10 bg-black/30 p-4">
+                  <p class="text-xs uppercase tracking-widest text-emerald-200">Clinical Beauty Commerce</p>
+                  <p class="mt-2 text-lg font-semibold text-white">Trust-led skincare shopping experience</p>
+                  <div class="mt-4 space-y-2">
+                    <div class="h-3 w-4/5 rounded bg-white/10"></div>
+                    <div class="h-3 w-full rounded bg-white/10"></div>
+                    <div class="h-3 w-2/3 rounded bg-white/10"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3 class="text-xl font-semibold text-white">BioSkin — Berlin</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-300">A clean, clinical e-commerce platform for a Berlin skincare brand, focused on credibility, education, and repeat purchases.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">React</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">Tailwind</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">TypeScript</span>
+                <span class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-emerald-200">Subscription UX</span>
+              </div>
+              <div class="mt-4 grid grid-cols-2 gap-3">
+                <div class="rounded-xl border border-white/10 bg-white/5 p-3"><p class="text-xs text-slate-400">Metric</p><p class="mt-1 font-semibold text-emerald-300">+164% Conversion Rate</p></div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-3"><p class="text-xs text-slate-400">Outcome</p><p class="mt-1 font-semibold text-white">+51% Repeat Sales</p></div>
+              </div>
+              <button class="preview-btn mt-4 text-sm font-semibold text-cyan-300 hover:text-cyan-200" data-target="bioskin">View interactive preview →</button>
+              <div class="preview-panel mt-4 hidden rounded-xl border border-cyan-400/20 bg-cyan-400/5 p-4 text-sm text-slate-200" id="preview-bioskin">
+                <p class="font-medium text-white">Interactive preview highlights</p>
+                <ul class="mt-2 space-y-1 text-slate-300">
+                  <li>• Ingredient transparency modules and trust microcopy</li>
+                  <li>• Subscription-first product detail architecture</li>
+                  <li>• Multilingual-ready layout for EU expansion</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="border-y border-white/10 bg-white/[0.02] py-20 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mx-auto mb-12 max-w-3xl text-center">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-violet-300">Core Services</p>
+          <h2 class="mt-2 text-3xl font-bold text-white sm:text-4xl">Elite digital services built for growth and scale</h2>
+          <p class="mt-3 text-slate-300">From premium storefronts to custom applications, every engagement is engineered for performance, credibility, and conversion.</p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="reveal glass card-hover rounded-3xl p-6">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-400/15 text-cyan-200">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M5 7v10a2 2 0 002 2h10a2 2 0 002-2V7M9 11h6"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white">High-End E-commerce Development & Custom Stores</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Bespoke storefronts and headless commerce ecosystems crafted to elevate brand perception, streamline buying journeys, and maximize lifetime value.</p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-300">
+              <li>• Custom UI/UX for premium positioning</li>
+              <li>• Scalable catalog and checkout architecture</li>
+              <li>• International-ready commerce foundations</li>
+            </ul>
+          </div>
+          <div class="reveal glass card-hover rounded-3xl p-6">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-400/15 text-violet-200">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v10H4zM8 19h8M10 15v4m4-4v4"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white">High-Performance Web Apps & Landing Pages</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Modern React/Next.js experiences built for speed, clarity, and reliability—ideal for launches, campaigns, SaaS products, and lead generation.</p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-300">
+              <li>• Pixel-perfect responsive interfaces</li>
+              <li>• SEO-conscious, fast-loading builds</li>
+              <li>• Modular systems for rapid iteration</li>
+            </ul>
+          </div>
+          <div class="reveal glass card-hover rounded-3xl p-6">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-300/15 text-amber-200">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Conversion Rate Optimization (CRO) & Speed Engineering</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">Data-informed UX refinements and technical performance tuning that remove friction, build trust, and turn qualified traffic into revenue.</p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-300">
+              <li>• Core Web Vitals & load-time optimization</li>
+              <li>• Funnel and CTA optimization</li>
+              <li>• Trust, clarity, and accessibility improvements</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials / Trust -->
+    <section id="testimonials" class="py-20 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mb-12 grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-end">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Social Proof & Testimonials</p>
+            <h2 class="mt-2 text-3xl font-bold text-white sm:text-4xl">Credibility that resonates with international founders</h2>
+            <p class="mt-3 max-w-2xl text-slate-300">Trusted by growth-focused teams for premium execution, transparent collaboration, and measurable business outcomes.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
+            <div class="glass rounded-2xl p-4 text-center"><p class="text-2xl font-bold text-white">50+</p><p class="mt-1 text-xs text-slate-400">Projects delivered</p></div>
+            <div class="glass rounded-2xl p-4 text-center"><p class="text-2xl font-bold text-white">12</p><p class="mt-1 text-xs text-slate-400">Countries served</p></div>
+            <div class="glass rounded-2xl p-4 text-center"><p class="text-2xl font-bold text-white">99.9%</p><p class="mt-1 text-xs text-slate-400">Performance focus</p></div>
+            <div class="glass rounded-2xl p-4 text-center"><p class="text-2xl font-bold text-white">24/7</p><p class="mt-1 text-xs text-slate-400">Support indicator</p></div>
+          </div>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-3">
+          <figure class="reveal glass rounded-3xl p-6">
+            <div class="mb-4 flex items-center gap-1 text-amber-300" aria-label="5 star rating">★★★★★</div>
+            <blockquote class="text-sm leading-relaxed text-slate-200">“Farouk Web Design transformed our storefront into a premium experience that actually converts. The attention to speed, detail, and brand feel was exceptional.”</blockquote>
+            <figcaption class="mt-5 border-t border-white/10 pt-4">
+              <p class="font-semibold text-white">Emily Carter</p>
+              <p class="text-xs text-slate-400">E-commerce Founder, New York, USA</p>
+            </figcaption>
+          </figure>
+          <figure class="reveal glass rounded-3xl p-6">
+            <div class="mb-4 flex items-center gap-1 text-amber-300" aria-label="5 star rating">★★★★★</div>
+            <blockquote class="text-sm leading-relaxed text-slate-200">“A rare blend of design taste and technical execution. Our launch site looked world-class and loaded incredibly fast across European markets.”</blockquote>
+            <figcaption class="mt-5 border-t border-white/10 pt-4">
+              <p class="font-semibold text-white">Luca Moretti</p>
+              <p class="text-xs text-slate-400">Startup Co-Founder, Milan, Italy</p>
+            </figcaption>
+          </figure>
+          <figure class="reveal glass rounded-3xl p-6">
+            <div class="mb-4 flex items-center gap-1 text-amber-300" aria-label="5 star rating">★★★★★</div>
+            <blockquote class="text-sm leading-relaxed text-slate-200">“Clear communication, strategic thinking, and flawless delivery. Farouk delivered a conversion-focused platform our investors and customers immediately trusted.”</blockquote>
+            <figcaption class="mt-5 border-t border-white/10 pt-4">
+              <p class="font-semibold text-white">Sofia Reinhardt</p>
+              <p class="text-xs text-slate-400">DTC Brand Director, Berlin, Germany</p>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="reveal mt-8 flex flex-wrap items-center gap-3 text-xs text-slate-300">
+          <span class="glass rounded-full px-4 py-2">🔐 SSL & Secure-by-Design Practices</span>
+          <span class="glass rounded-full px-4 py-2">🛡️ Privacy-conscious implementation</span>
+          <span class="glass rounded-full px-4 py-2">⏱ 24/7 Support Indicator</span>
+          <span class="glass rounded-full px-4 py-2">✅ Quality-assured delivery workflow</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="relative border-t border-white/10 py-20 sm:py-24">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,.08),transparent_25%),radial-gradient(circle_at_80%_30%,rgba(139,92,246,.1),transparent_25%)]"></div>
+      <div class="relative mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[.95fr_1.05fr] lg:px-8">
+        <div class="reveal">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-violet-300">Project Inquiry</p>
+          <h2 class="mt-2 text-3xl font-bold text-white sm:text-4xl">Let’s build your next high-converting digital experience</h2>
+          <p class="mt-4 max-w-xl text-slate-300">Share your goals, timeline, and budget range. You’ll receive a thoughtful response focused on outcomes, scope, and the best path to launch.</p>
+          <div class="mt-8 space-y-4">
+            <div class="glass rounded-2xl p-4">
+              <p class="text-sm font-semibold text-white">What you can expect</p>
+              <ul class="mt-2 space-y-1 text-sm text-slate-300">
+                <li>• Strategic discovery and conversion-focused recommendations</li>
+                <li>• Transparent scope and timeline guidance</li>
+                <li>• Premium design and engineering standards</li>
+              </ul>
+            </div>
+            <div class="glass rounded-2xl p-4 text-sm text-slate-300">
+              <p><span class="font-semibold text-white">Response time:</span> Within 24 hours (business days)</p>
+              <p class="mt-1"><span class="font-semibold text-white">Availability:</span> US & Europe client engagements</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal glass rounded-3xl p-6 shadow-glow sm:p-8">
+          <form id="inquiryForm" novalidate class="space-y-5">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="name" class="mb-1.5 block text-sm font-medium text-slate-200">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" class="field w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-slate-500" placeholder="Your full name" />
+                <p class="mt-1 hidden text-xs text-rose-300" data-error-for="name"></p>
+              </div>
+              <div>
+                <label for="email" class="mb-1.5 block text-sm font-medium text-slate-200">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" class="field w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-slate-500" placeholder="you@company.com" />
+                <p class="mt-1 hidden text-xs text-rose-300" data-error-for="email"></p>
+              </div>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="budget" class="mb-1.5 block text-sm font-medium text-slate-200">Project Budget</label>
+                <select id="budget" name="budget" class="field w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white">
+                  <option value="">Select a budget range</option>
+                  <option>$3k-$5k</option>
+                  <option>$5k-$10k</option>
+                  <option>$10k-$25k</option>
+                  <option>$25k+</option>
+                </select>
+                <p class="mt-1 hidden text-xs text-rose-300" data-error-for="budget"></p>
+              </div>
+              <div>
+                <label for="projectType" class="mb-1.5 block text-sm font-medium text-slate-200">Project Type</label>
+                <select id="projectType" name="projectType" class="field w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white">
+                  <option value="">Select project type</option>
+                  <option>High-End E-commerce Development</option>
+                  <option>Custom Store / Headless Commerce</option>
+                  <option>Web App / SaaS Interface</option>
+                  <option>Landing Page / Funnel</option>
+                  <option>CRO & Speed Engineering</option>
+                </select>
+                <p class="mt-1 hidden text-xs text-rose-300" data-error-for="projectType"></p>
+              </div>
+            </div>
+            <div>
+              <label for="message" class="mb-1.5 block text-sm font-medium text-slate-200">Message</label>
+              <textarea id="message" name="message" rows="5" class="field w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-slate-500" placeholder="Tell us about your brand, goals, timeline, and what success looks like."></textarea>
+              <p class="mt-1 hidden text-xs text-rose-300" data-error-for="message"></p>
+            </div>
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p class="text-xs text-slate-400">By submitting, you agree to be contacted regarding your project inquiry.</p>
+              <button type="submit" class="btn-primary inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-slate-950">Request Project Estimate</button>
+            </div>
+            <div id="formSuccess" class="hidden rounded-2xl border border-emerald-400/30 bg-emerald-400/10 p-4 text-sm text-emerald-100" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-black/30">
+    <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-4 lg:px-8">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-violet-500 text-sm font-extrabold text-black">FW</span>
+          <div>
+            <p class="font-semibold text-white">Farouk Web Design</p>
+            <p class="text-sm text-slate-400">Crafting High-Converting, World-Class E-Commerce Ecosystems & Custom Web Applications for Global Brands.</p>
+          </div>
+        </div>
+        <p class="mt-4 max-w-xl text-sm text-slate-400">Elite web design and development for e-commerce brands, startups, and entrepreneurs across the US, Europe, and worldwide.</p>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Explore</h3>
+        <ul class="mt-3 space-y-2 text-sm text-slate-400">
+          <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
+          <li><a href="#services" class="hover:text-white transition">Services</a></li>
+          <li><a href="#testimonials" class="hover:text-white transition">Testimonials</a></li>
+          <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Global Trust</h3>
+        <ul class="mt-3 space-y-2 text-sm text-slate-400">
+          <li>🔒 Security badges & secure practices</li>
+          <li>⏱ 24/7 support indicator</li>
+          <li>🌍 Serving US, Europe & worldwide</li>
+          <li>⚡ Performance-first engineering</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <p>&copy; <span id="year"></span> Farouk Web Design. All rights reserved.</p>
+        <p>Built for speed, trust, and conversion.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      if (!el.classList.contains('visible')) {
+        el.style.transitionDelay = `${Math.min(i * 40, 160)}ms`;
+        observer.observe(el);
+      }
+    });
+
+    // Portfolio interactive previews
+    document.querySelectorAll('.preview-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target');
+        const panel = document.getElementById(`preview-${target}`);
+        if (!panel) return;
+        const isHidden = panel.classList.contains('hidden');
+        document.querySelectorAll('.preview-panel').forEach(p => p.classList.add('hidden'));
+        document.querySelectorAll('.preview-btn').forEach(b => b.textContent = 'View interactive preview →');
+        if (isHidden) {
+          panel.classList.remove('hidden');
+          btn.textContent = 'Hide preview ↑';
+        }
+      });
+    });
+
+    // Form validation & instant success
+    const form = document.getElementById('inquiryForm');
+    const success = document.getElementById('formSuccess');
+    const validators = {
+      name: v => v.trim().length >= 2 || 'Please enter your full name.',
+      email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Please enter a valid email address.',
+      budget: v => !!v || 'Please select a project budget.',
+      projectType: v => !!v || 'Please select a project type.',
+      message: v => v.trim().length >= 20 || 'Please provide at least 20 characters about your project.'
+    };
+
+    function setError(field, message) {
+      const input = document.getElementById(field);
+      const error = document.querySelector(`[data-error-for="${field}"]`);
+      if (!input || !error) return;
+      if (message) {
+        error.textContent = message;
+        error.classList.remove('hidden');
+        input.classList.add('border-rose-400/60');
+      } else {
+        error.textContent = '';
+        error.classList.add('hidden');
+        input.classList.remove('border-rose-400/60');
+      }
+    }
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      success.classList.add('hidden');
+      const data = Object.fromEntries(new FormData(form).entries());
+      let valid = true;
+      for (const [key, fn] of Object.entries(validators)) {
+        const result = fn(String(data[key] || ''));
+        if (result !== true) { setError(key, result); valid = false; }
+        else setError(key, '');
+      }
+      if (!valid) return;
+
+      const summary = `${data.name}, thank you for your inquiry. We received your ${data.projectType} request (${data.budget}) and will respond within 24 hours to discuss your goals and next steps.`;
+      success.textContent = `Success! ${summary}`;
+      success.classList.remove('hidden');
+      form.reset();
+      form.querySelector('button[type="submit"]').blur();
+    });
+
+    // Inline validation on blur
+    ['name','email','budget','projectType','message'].forEach(id => {
+      const el = document.getElementById(id);
+      el?.addEventListener('blur', () => {
+        const result = validators[id](el.value);
+        setError(id, result === true ? '' : result);
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
